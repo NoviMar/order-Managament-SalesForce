@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Products" icon-name="standard:product">
+        <!-- Search Input -->
+        <lightning-input type="text" label="Search Product Name" value={searchKey} onchange={handleSearchKeyChange}></lightning-input>
+        <lightning-button label="Search" onclick={handleSearch} class="slds-m-left_x-small"></lightning-button>
+
+        <!-- Type and Family Filters -->
+        <div class="slds-grid slds-gutters">
+            <lightning-combobox label="Type" value={typeFilter} options={typeOptions} onchange={handleTypeChange}></lightning-combobox>
+            <lightning-combobox label="Family" value={familyFilter} options={familyOptions} onchange={handleFamilyChange}></lightning-combobox>
+        </div>
+
+        <!-- Product Table -->
+        <template if:true={products}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Family</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <template for:each={products} for:item="product">
+                    <tr key={product.Id}>
+                        <td>{product.Name}</td>
+                        <td>{product.Description__c}</td>
+                        <td>{product.Type__c}</td>
+                        <td>{product.Family__c}</td>
+                        <td>
+                            <a href={product.Image__c} target="_blank">
+                                <img src={product.Image__c} alt={product.Name} style="height: 50px; width: 50px;" />
+                            </a>
+                        </td>
+                        <td>{product.Price__c}</td>
+                    </tr>
+                </template>
+                </tbody>
+            </table>
+        </template>
+
+        <!-- Error Handling -->
+        <template if:true={error}>
+            <p>{error}</p>
+        </template>
+    </lightning-card>
+</template>

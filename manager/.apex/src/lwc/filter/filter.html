@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-col left slds-size_12-of-12 slds-box slds-theme_default slds-grid slds-grid_vertical slds-grow">
+        <div class="slds-m-around_medium">
+            <h2>Filter</h2>
+            <h3 class="slds-m-top_medium">Type:</h3>
+            <lightning-button-group>
+                <lightning-button label="Тип 1" onclick={handleType1Click}></lightning-button>
+                <lightning-button label="Тип 2" onclick={handleType2Click}></lightning-button>
+                <lightning-button label="Тип 3" onclick={handleType3Click}></lightning-button>
+            </lightning-button-group>
+            <h3 class="slds-m-top_medium">Family:</h3>
+            <ul class="slds-m-left_large">
+                <lightning-button-group>
+                    <lightning-button label="Семейство 1" onclick={handleFamily1Click}></lightning-button>
+                    <lightning-button label="Семейство 2" onclick={handleFamily2Click}></lightning-button>
+                    <lightning-button label="Семейство 3" onclick={handleFamily3Click}></lightning-button>
+                </lightning-button-group>
+            </ul>
+        </div>
+    </div>
+</template>
