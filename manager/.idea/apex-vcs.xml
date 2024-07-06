@@ -2,43 +2,208 @@
 <project version="4">
   <component name="ApexVcsIndex">
     <index-record>
+      <option name="path" value="/src/classes/OrderTriggerHandler.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/src/lwc/orderManager/orderManager.css" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderHelper.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/ProductFilterController.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/orderManagament/orderManagament.js-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/src/classes/OrderItemsController.cls-meta.xml" />
+      <option name="type" value="NEW" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/header/header.html" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/newL/newL.js-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderTriggerHandler.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/filerProductController.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/triggers/TotalTrigger.trigger-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderItemController.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/src/classes/OrdersControllersTest.cls-meta.xml" />
+      <option name="type" value="MODIFIED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/header/header.js" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderControllerTest.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/domExample/domExample.js-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrdersController.cls" />
+      <option name="type" value="MODIFIED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/filter/filter.html" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/triggers/OrderTrigger.trigger-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/filerProductController.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/src/classes/OrderItemTriggerHandlerTest.cls-meta.xml" />
+      <option name="type" value="MODIFIED" />
+    </index-record>
+    <index-record>
       <option name="path" value="/src/lwc/newL/newL.js" />
       <option name="type" value="DELETED" />
     </index-record>
     <index-record>
-      <option name="path" value="/src/lwc/orderManager/orderManager.js" />
+      <option name="path" value="/src/classes/OrderItemTriggerHandlerTest.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/header/header.js-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderItemTriggerHandler.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderTriggerTest.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/ProductFilterController.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderControllerTest.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/src/lwc/orderManager/orderManager.html" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/triggers/TotalTrigger.trigger" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrdersControllersTest.cls" />
       <option name="type" value="MODIFIED" />
-    </index-record>
-    <index-record>
-      <option name="path" value="/src/classes/OrderController.cls-meta.xml" />
-      <option name="type" value="NEW" />
-    </index-record>
-    <index-record>
-      <option name="path" value="/src/lwc/ProductFilter/ProductFilter.js-meta.xml" />
-      <option name="type" value="NEW" />
     </index-record>
     <index-record>
       <option name="hasConflicts" value="true" />
       <option name="path" value="/src/classes/ProductController.cls" />
     </index-record>
     <index-record>
-      <option name="path" value="/src/lwc/ProductFilter/ProductFilter.html" />
-      <option name="type" value="NEW" />
-    </index-record>
-    <index-record>
-      <option name="path" value="/src/lwc/ProductFilter/ProductFilter.js" />
-      <option name="type" value="NEW" />
-    </index-record>
-    <index-record>
-      <option name="path" value="/src/lwc/newL/newL.html" />
+      <option name="path" value="/src/classes/OrderItemTriggerHandler.cls-meta.xml" />
       <option name="type" value="DELETED" />
     </index-record>
     <index-record>
       <option name="path" value="/src/classes/OrderController.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderTriggerTest.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/domExample/domExample.js" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/ProductControllerTest.cls" />
+      <option name="type" value="MODIFIED" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/src/triggers/OrderTrigger.trigger" />
+      <option name="type" value="MODIFIED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/orderManagament/orderManagament.js" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/ImageController.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrderController.cls-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/OrdersControllers.cls" />
+      <option name="type" value="MODIFIED" />
+    </index-record>
+    <index-record>
+      <option name="hasConflicts" value="true" />
+      <option name="path" value="/src/classes/OrderHelper.cls-meta.xml" />
       <option name="type" value="NEW" />
     </index-record>
     <index-record>
-      <option name="path" value="/src/lwc/newL/newL.js-meta.xml" />
+      <option name="path" value="/src/classes/OrderItemController.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/filter/filter.js-meta.xml" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/orderManagament/orderManagament.html" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/classes/ImageController.cls" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/filter/filter.js" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/domExample/domExample.html" />
+      <option name="type" value="DELETED" />
+    </index-record>
+    <index-record>
+      <option name="path" value="/src/lwc/newL/newL.html" />
       <option name="type" value="DELETED" />
     </index-record>
   </component>

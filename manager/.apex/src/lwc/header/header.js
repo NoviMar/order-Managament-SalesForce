@@ -1,17 +1,17 @@
-import { LightningElement, wire, api } from 'lwc';
-import getAccount from '@salesforce/apex/AccountController.getAccount';
+import { LightningElement, wire } from 'lwc';
+import getUserInfo from '@salesforce/apex/AccountController.getUserInfo';
 
 export default class AccountController extends LightningElement {
-    @api recordId; // Automatically populated with the current record's Id
+    userDetails;
 
-    account;
-
-    @wire(getAccount, { accountId: '$recordId' })
-    wiredAccount({ error, data }) {
+    // Fetch user info
+    @wire(getUserInfo)
+    wiredUserInfo({ error, data }) {
         if (data) {
-            this.account = data;
+            this.userDetails = data;
         } else if (error) {
-            console.error('Error loading account details:', error);
+            console.error('Error loading user info:', error);
         }
     }
+
 }

@@ -1,0 +1,16 @@
+<template>
+    <!-- Кнопка для переключения видимости -->
+    <lightning-button label="Toggle Details" onclick={toggleDetails}></lightning-button>
+
+    <!-- Условное отображение элемента -->
+    <template if:true={showDetails}>
+        <div class="slds-box slds-theme_default">
+            <p>Here are the details...</p>
+        </div>
+    </template>
+
+    <!-- Условное отображение другого элемента -->
+    <template if:false={showDetails}>
+        <p>Details are hidden.</p>
+    </template>
+</template>

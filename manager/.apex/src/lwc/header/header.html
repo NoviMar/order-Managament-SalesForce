@@ -1,12 +1,12 @@
 <template>
     <lightning-card title="Account Details">
         <div class="slds-p-around_medium">
-            <template if:true={account}>
-                <p>Account Name: {account.Name}</p>
-                <p>Account ID: {account.Id}</p>
+            <template if:true={userDetails}>
+                <p>User Name: {userDetails.Name}</p>
+                <p>User ID: {userDetails.Id}</p>
             </template>
-            <template if:false={account}>
-                <p>No account details to display.</p>
+            <template if:false={userDetails}>
+                <p>No user details to display.</p>
             </template>
         </div>
     </lightning-card>

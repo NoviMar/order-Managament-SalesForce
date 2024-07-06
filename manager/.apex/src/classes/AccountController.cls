@@ -1,6 +1,11 @@
+// AccountController.cls
 public with sharing class AccountController {
 	@AuraEnabled(cacheable=true)
-	public static Account getAccount(Id accountId) {
-		return [SELECT Id, Name FROM Account WHERE Id = :accountId LIMIT 1];
+	public static User getUserInfo() {
+		return [
+				SELECT Id, Name, IsManager__c
+				FROM User
+				WHERE Id = :UserInfo.getUserId()
+		];
 	}
 }

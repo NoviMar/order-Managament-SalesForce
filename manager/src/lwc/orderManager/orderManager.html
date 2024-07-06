@@ -1,123 +1,184 @@
 <template>
-    <lightning-card title="Products" icon-name="standard:product">
-        <!-- Search Input -->
-        <lightning-input type="text" label="Search Product Name" value={searchKey} onchange={handleSearchKeyChange}></lightning-input>
-        <lightning-button label="Search" onclick={handleSearch} class="slds-m-left_x-small"></lightning-button>
-
-        <!-- Product Table -->
-        <template if:true={products}>
-            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Family</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                    <th>Actions</th> <!-- New column for action buttons -->
-                </tr>
-                </thead>
-                <tbody>
-                <template for:each={products} for:item="product">
-                    <tr key={product.Id}>
-                        <td>{product.Name}</td>
-                        <td>{product.Description__c}</td>
-                        <td>{product.Type__c}</td>
-                        <td>{product.Family__c}</td>
-                        <td>
-                            <a href={product.Image__c} target="_blank">
-                                <img src={product.Image__c} alt={product.Name} style="height: 50px; width: 50px;" />
-                            </a>
-                        </td>
-                        <td>{product.Price__c}</td>
-                        <td>
-                            <!-- Button to open modal -->
-                            <lightning-button label="Details" onclick={handleShowDetails} data-id={product.Id}></lightning-button>
-                            <!-- Button to add to cart -->
-                            <lightning-button label="Add to Cart" onclick={handleAddToCart} data-id={product.Id}></lightning-button>
-                        </td>
-                    </tr>
-                </template>
-                </tbody>
-            </table>
-        </template>
-
-        <!-- Error Handling -->
-        <template if:true={error}>
-            <!-- Display error message -->
-            <p>Error loading products: {error}</p>
-        </template>
-
-        <!-- Modal for displaying product details -->
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <template if:true={userDetails}>
+                <div class="user-info">
+                    <p>User Name: <span>{userDetails.Name}</span> | User ID: <span>{userDetails.Id}</span></p>
+                </div>
+            </template>
+            <div class="cart-button-container">
+                <lightning-button label="Cart" onclick={openCartModal} class="custom-button"></lightning-button>
+                <lightning-button label="Product" onclick={openCreateProductModal} class="custom-button"></lightning-button>
+            </div>
+        </div>
+        <div class="content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3>Filter</h3>
+                <h4>Type:</h4>
+                <ul class="filter-list">
+                    <li class="filter-item" data-type="first Example" onclick={handleTypeFilterChange}>first Example</li>
+                    <li class="filter-item" data-type="second Example" onclick={handleTypeFilterChange}>second Example</li>
+                    <li class="filter-item" data-type="third Example" onclick={handleTypeFilterChange}>third Example</li>
+                </ul>
+                <h4>Family:</h4>
+                <ul class="filter-list">
+                    <li class="filter-item" data-family="first Example" onclick={handleFamilyFilterChange}>first Example</li>
+                    <li class="filter-item" data-family="second Example" onclick={handleFamilyFilterChange}>second Example</li>
+                    <li class="filter-item" data-family="third Example" onclick={handleFamilyFilterChange}>third Example</li>
+                </ul>
+            </div>
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Search -->
+                <div class="search">
+                    <lightning-input type="text" label="Search" value={searchKey} onchange={handleSearchKeyChange} class="search-input"></lightning-input>
+                </div>
+                <!-- Product Cards -->
+                <div class="product-cards">
+                    <template if:true={products}>
+                        <template for:each={products} for:item="product" for:index="index">
+                            <div class="product-card-wrapper" key={product.Id}>
+                                <lightning-card class="product-card">
+                                    <h3 class="product-name">{product.Name}</h3>
+                                    <p class="product-description">{product.strippedDescription}</p>
+                                    <div class="product-card-actions">
+                                        <lightning-button label="Details" data-id={product.Id} onclick={handleShowDetails} class="custom-button"></lightning-button>
+                                        <lightning-button label="Add" data-id={product.Id} onclick={handleAddToCart} class="custom-button"></lightning-button>
+                                    </div>
+                                </lightning-card>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <!-- Product Details Modal -->
         <template if:true={showModal}>
             <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
                 <div class="slds-modal__container">
                     <header class="slds-modal__header">
                         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-                            <lightning-icon icon-name="utility:close" alternative-text="Close"></lightning-icon>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
                             <span class="slds-assistive-text">Close</span>
                         </button>
                         <h2 class="slds-text-heading_medium">Product Details</h2>
                     </header>
-                    <div class="slds-modal__content slds-p-around_medium">
-                        <p><b>Name:</b> {selectedProduct.Name}</p>
-                        <p><b>Description:</b> {selectedProduct.Description__c}</p>
-                        <p><b>Type:</b> {selectedProduct.Type__c}</p>
-                        <p><b>Family:</b> {selectedProduct.Family__c}</p>
-                        <p><b>Price:</b> {selectedProduct.Price__c}</p>
-                        <lightning-button label="Add to Cart" onclick={handleAddToCartFromModal} data-id={selectedProduct.Id}></lightning-button>
+                    <div class="slds-modal__content slds-p-around_medium modal-content">
+                        <p><strong>Name:</strong></p>
+                        <p>{selectedProduct.Name}</p>
+                        <p><strong>Description:</strong></p>
+                        <p class="product-description">{selectedProduct.strippedDescription}</p>
+                        <p><strong>Type:</strong></p>
+                        <p>{selectedProduct.Type__c}</p>
+                        <p><strong>Family:</strong></p>
+                        <p>{selectedProduct.Family__c}</p>
+                        <p><strong>Price:</strong></p>
+                        <p>{selectedProduct.Price__c}</p>
                     </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button>
+                    </footer>
                 </div>
             </section>
             <div class="slds-backdrop slds-backdrop_open"></div>
         </template>
-
-        <!-- Cart Button -->
-        <div class="slds-m-top_medium">
-            <lightning-button label="View Cart" onclick={openCartModal} class="slds-m-horizontal_small"></lightning-button>
-        </div>
-
+        <!-- Notification -->
+        <template if:true={showNotification}>
+            <div class="slds-notify slds-notify_toast slds-theme_success">
+                <span class="slds-assistive-text">Info</span>
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small">{notificationMessage}</h2>
+                </div>
+                <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="Close" onclick={closeNotification}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
+        </template>
         <!-- Cart Modal -->
         <template if:true={showCartModal}>
             <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
                 <div class="slds-modal__container">
                     <header class="slds-modal__header">
                         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeCartModal}>
-                            <lightning-icon icon-name="utility:close" alternative-text="Close"></lightning-icon>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
                             <span class="slds-assistive-text">Close</span>
                         </button>
-                        <h2 class="slds-text-heading_medium">Cart</h2>
+                        <h2 class="slds-text-heading_medium">Корзина</h2>
                     </header>
                     <div class="slds-modal__content slds-p-around_medium">
-                        <template if:true={cartItems.length}>
-                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <template if:true={cartItems}>
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Name">Название</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Quantity">Количество</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate" title="Price">Цена</div>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <template for:each={cartItems} for:item="item">
                                     <tr key={item.Id}>
-                                        <td>{item.Name}</td>
-                                        <td>{item.Description__c}</td>
-                                        <td>{item.Price__c}</td>
+                                        <th scope="row">
+                                            <div class="slds-truncate" title={item.Name}>{item.Name}</div>
+                                        </th>
+                                        <td>
+                                            <div class="slds-truncate" title={item.quantity}>{item.quantity}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate" title={item.Price__c}>{item.Price__c}</div>
+                                        </td>
                                     </tr>
                                 </template>
                                 </tbody>
                             </table>
                         </template>
-                        <template if:false={cartItems.length}>
-                            <p>Your cart is empty.</p>
-                        </template>
                     </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeCartModal}>Закрыть</button>
+                        <button class="slds-button slds-button_brand" onclick={handleSaveOrder}>Оформить заказ</button>
+                    </footer>
                 </div>
             </section>
             <div class="slds-backdrop slds-backdrop_open"></div>
         </template>
-
-    </lightning-card>
+        <!-- Create Product Modal -->
+        <template if:true={showCreateProductModal}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeCreateProductModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 class="slds-text-heading_medium">Create Product</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-record-edit-form object-api-name="Product__c" onsuccess={handleProductCreated} onerror={handleProductError}>
+                            <lightning-messages></lightning-messages>
+                            <lightning-input-field field-name="Name" data-id="name" onchange={handleInputChange}></lightning-input-field>
+                            <lightning-input-field field-name="Description__c" data-id="description" onchange={handleInputChange}></lightning-input-field>
+                            <lightning-combobox name="type" label="Type" data-id="type" value={productType} placeholder="Select Type" options={typeOptions} onchange={handleInputChange}></lightning-combobox>
+                            <lightning-combobox name="family" label="Family" data-id="family" value={productFamily} placeholder="Select Family" options={familyOptions} onchange={handleInputChange}></lightning-combobox>
+                            <lightning-input-field field-name="Image__c" data-id="image" onchange={handleInputChange}></lightning-input-field>
+                            <lightning-input-field field-name="Price__c" data-id="price" onchange={handleInputChange}></lightning-input-field>
+                        </lightning-record-edit-form>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeCreateProductModal}>Close</button>
+                        <button class="slds-button slds-button_brand" onclick={handleSaveProduct}>Create</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </div>
 </template>
