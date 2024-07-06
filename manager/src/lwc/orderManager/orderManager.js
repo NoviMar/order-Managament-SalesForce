@@ -140,6 +140,13 @@ export default class OrderManager extends NavigationMixin(LightningElement) {
                 (!this.familyFilter || product.Family__c === this.familyFilter) &&
                 (!this.searchKey || nameMatches || descriptionMatches);
         });
+        this.updateProductDescriptions();
+    }
+
+    updateProductDescriptions() {
+        this.products = this.products.map(product => {
+            return { ...product, strippedDescription: this.stripHTML(product.Description__c) };
+        });
     }
 
     handleAddToCart(event) {

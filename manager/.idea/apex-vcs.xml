@@ -68,10 +68,6 @@
       <option name="type" value="DELETED" />
     </index-record>
     <index-record>
-      <option name="path" value="/src/classes/OrdersController.cls" />
-      <option name="type" value="MODIFIED" />
-    </index-record>
-    <index-record>
       <option name="path" value="/src/lwc/filter/filter.html" />
       <option name="type" value="DELETED" />
     </index-record>

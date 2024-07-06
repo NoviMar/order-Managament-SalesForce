@@ -86,7 +86,7 @@
 }
 
 .search-input {
-    width: 93%;
+    width: 90%;
 }
 
 .product-cards {
@@ -98,29 +98,43 @@
 .product-card-wrapper {
     flex: 1 0 45%;
     max-width: 45%;
+    display: flex;
+    justify-content: center;
 }
 
 .product-card {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
 }
 
 .product-name {
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
+    flex: 0 1 auto;
+    min-height: 3em;
 }
 
 .product-description {
     font-size: 1.1em;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    flex: 1 1 auto;
+    overflow: hidden;
+    min-height: 3em;
 }
 
 .product-card-actions {
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex: 0 1 auto;
+    min-height: 3em; /* Установим минимальную высоту для блока действий */
 }
 
 .modal-content p {

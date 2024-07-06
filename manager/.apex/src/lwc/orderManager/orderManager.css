@@ -96,11 +96,12 @@
 }
 
 .product-card-wrapper {
-    flex: 1 0 45%;
-    max-width: 45%;
+    width: 300px; /* Set a fixed width */
+    flex: none; /* Prevent flex-grow */
 }
 
 .product-card {
+    width: 100%; /* Ensure the card takes up the full width of its wrapper */
     padding: 20px;
     border-radius: 10px;
     text-align: center;
